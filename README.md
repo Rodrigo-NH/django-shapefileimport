@@ -59,3 +59,5 @@ ff = serialize('geojson', ds.objects.all(), geometry_field='geom',)
 - You must have PostGIS enabled, refer to https://postgis.net/install/
 - This APP uses GeoDjango's LayerMapping helper to extract fields among other operations
 - Only tested against PostreSQL
+
+[LayerMapping]: https://docs.djangoproject.com/en/3.2/ref/contrib/gis/layermapping/
