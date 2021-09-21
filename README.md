@@ -13,9 +13,10 @@ Clone this repo:
 ```sh
 git clone https://github.com/Rodrigo-NH/django-shapefileimport
 ```
-Or install with pip/pipenv (e.g.  'pipenv install django-shapefileimport') [PiPy package]  Enter the 'django-shapefileimport' directory, install de dependencies, enter shell and start a new project (For simplicity I reccomend keeping the ending dot at the django-admin startproject command, it makes project folder to be created at same level as the APP [not nested])
+Or install with pip/pipenv (e.g.  'pipenv install django-shapefileimport') [PiPy package]
+Enter the 'django-shapefileimport' directory, install de dependencies, enter shell and start a new project (For simplicity I reccomend keeping the ending dot at the django-admin startproject command, it makes project folder to be created at same level as the APP [not nested])
 ```sh
-pipenv installhttps://pypi.org/project/django-shapefileimport/
+pipenv install
 pipenv shell
 django-admin startproject mysite .
 ```
@@ -34,7 +35,6 @@ DATABASES = {
 'HOST': '192.168.0.40',
 'PORT': '5432',
 'PASSWORD': 'dbpassword',
-#'CONN_MAX_AGE': 0,
 },
 }
 ```
