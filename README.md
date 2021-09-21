@@ -22,20 +22,20 @@ django-admin startproject mysite .
 edit './mysite/settings.py' and add to INSTALLED_APPS:
 ```sh
 'django.contrib.gis',
-'shapeimport'
+'shapefileimport'
 ```
 Still at './mysite/settings.py', configure the database connection:
-```sh
+```py
 DATABASES = {
-    'default': {
-         'ENGINE': 'django.contrib.gis.db.backends.postgis',
-         'NAME': 'shapeimportsDB',
-         'USER': 'geo',
-         'HOST': '192.168.0.40',
-         'PORT': '5432',
-         'PASSWORD': 'dbpassword',
-        #'CONN_MAX_AGE': 0,
-    },
+'default': {
+'ENGINE': 'django.contrib.gis.db.backends.postgis',
+'NAME': 'shapeimportsDB',
+'USER': 'geo',
+'HOST': '192.168.0.40',
+'PORT': '5432',
+'PASSWORD': 'dbpassword',
+#'CONN_MAX_AGE': 0,
+},
 }
 ```
 Run migrations, create superuser and start the APP:
@@ -48,7 +48,7 @@ python manage.py runserver
 It must be done at this point. Enter admin panel and start importing your shapefiles.
 After importing, use 'loadShape()' function to load the shapefile and use. Example:
 ```sh
-from shapeimport.shapetasks import loadShape
+from shapefileimport.shapetasks import loadShape
 from django.core.serializers import serialize
 ds = loadShape('MyShapeName')
 ff = serialize('geojson', ds.objects.all(), geometry_field='geom',)

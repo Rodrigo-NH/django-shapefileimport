@@ -1,4 +1,7 @@
 Pipfile.lock
 manage.py
 mysite
+dist
+*.egg*
+refs.txt
 

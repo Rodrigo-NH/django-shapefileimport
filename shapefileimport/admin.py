@@ -16,12 +16,12 @@ class ShapeImportsAdmin(admin.ModelAdmin):
                                                             shapename=shapemodel[2])
         deleteorigin = obj.deletefile
         if deleteorigin is True:
-            orf = 'shapeimport/uploads/' + str(file['filename'])
+            orf = 'shapefileimport/uploads/' + str(file['filename'])
             os.remove(orf)
 
     def delete_queryset(self, request, queryset):
         for shape in queryset.iterator():
-            table = 'shapeimport_' + str(shape.shapetable)
+            table = 'shapefileimport_' + str(shape.shapetable)
             SQL = "DROP TABLE " + table + ";"
             with connection.cursor() as cursor:
                 cursor.execute(SQL)

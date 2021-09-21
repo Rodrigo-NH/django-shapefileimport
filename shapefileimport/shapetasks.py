@@ -17,11 +17,11 @@ def ImportShapeFile(f, user, shpID):
             extens = target_file.split(target_file[:-4])[1]
             if extens.upper() == ".SHP":
                 shapename = target_file[:-4]
-            fn = 'shapeimport/uploads/'+shp+extens.upper()
+            fn = 'shapefileimport/uploads/'+shp+extens.upper()
             fl.append(fn)
             with open(fn, "wb") as f:
                 f.write(zip_ref.read(target_file))
-    shpf='shapeimport/uploads/'+shp+'.SHP'
+    shpf='shapefileimport/uploads/'+shp+'.SHP'
     ba = call_command('ogrinspect', shpf, shp, '--multi-geom', '--mapping', '--null=True')
     bas = ba.splitlines()
     ct = 0
@@ -59,7 +59,7 @@ def loadShape(shapename):
     fields = fieldObjetify(tt.shapemodel)
     table = tt.shapetable
     desiredmodel = None
-    app_models = apps.get_app_config('shapeimport').get_models()
+    app_models = apps.get_app_config('shapefileimport').get_models()
     allmodels = []
     for model in app_models:
         if model._meta.verbose_name == table:
@@ -73,5 +73,5 @@ def fieldObjetify(fields):
     outFields = {}
     for key in fields:
         outFields[key] = eval(fields[key])
-    outFields['__module__'] = 'shapeimport.shapetasks'
+    outFields['__module__'] = 'shapefileimport.shapetasks'
     return outFields
