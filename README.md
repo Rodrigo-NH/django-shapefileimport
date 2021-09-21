@@ -7,15 +7,16 @@ This APP proposes an alternative to manage such shapefiles:
 - Loads shapefiles by name on demand without touching migrations (so you can use all nice GeoDjango API features)
 - Delete shapefiles from admin panel
 - Option to keep or discard uploaded ZIP files while importing to DB
-
+/home/rod/.local/share/virtualenvs/temp-xQ4HFmRK
 ## Installation
 Clone this repo:
 ```sh
 git clone https://github.com/Rodrigo-NH/django-shapefileimport
 ```
+Or install with pip/pipenv (e.g.  'pipenv install django-shapefileimport') [PiPy package]
 Enter the 'django-shapefileimport' directory, install de dependencies, enter shell and start a new project (For simplicity I reccomend keeping the ending dot at the django-admin startproject command, it makes project folder to be created at same level as the APP [not nested])
 ```sh
-pipenv install
+pipenv installhttps://pypi.org/project/django-shapefileimport/
 pipenv shell
 django-admin startproject mysite .
 ```
@@ -61,3 +62,4 @@ ff = serialize('geojson', ds.objects.all(), geometry_field='geom',)
 - Only tested against PostreSQL
 
 [LayerMapping]: https://docs.djangoproject.com/en/3.2/ref/contrib/gis/layermapping/
+[PiPy package]: https://pypi.org/project/django-shapefileimport/
