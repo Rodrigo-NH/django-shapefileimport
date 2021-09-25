@@ -1,7 +1,8 @@
 from django.contrib import admin
 from .models import ShapeImports
-from .shapetasks import loadShape, ImportShapeFile
+from .shapetasks import ImportShapeFile
 from django.db import connection
+from django.conf import settings
 import os
 
 class ShapeImportsAdmin(admin.ModelAdmin):
@@ -16,7 +17,7 @@ class ShapeImportsAdmin(admin.ModelAdmin):
                                                             shapename=shapemodel[2])
         deleteorigin = obj.deletefile
         if deleteorigin is True:
-            orf = 'shapefileimport/uploads/' + str(file['filename'])
+            orf = settings.MEDIA_ROOT + 'shapefileimport/uploads/' + str(file['filename'])
             os.remove(orf)
 
     def delete_queryset(self, request, queryset):

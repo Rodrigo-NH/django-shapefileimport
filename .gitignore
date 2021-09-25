@@ -4,4 +4,6 @@ mysite
 dist
 *.egg*
 refs.txt
-
+__pycache__/
+migrations/
+uploads/

@@ -4,6 +4,7 @@ from django.contrib.gis.db import models
 from django.apps import apps
 from django.core.management import call_command
 from django.db import connections
+from django.conf import settings
 import os
 import zipfile
 
@@ -17,11 +18,11 @@ def ImportShapeFile(f, user, shpID):
             extens = target_file.split(target_file[:-4])[1]
             if extens.upper() == ".SHP":
                 shapename = target_file[:-4]
-            fn = 'shapefileimport/uploads/'+shp+extens.upper()
+            fn = settings.MEDIA_ROOT + 'shapefileimport/uploads/'+shp+extens.upper()
             fl.append(fn)
             with open(fn, "wb") as f:
                 f.write(zip_ref.read(target_file))
-    shpf='shapefileimport/uploads/'+shp+'.SHP'
+    shpf=settings.MEDIA_ROOT + 'shapefileimport/uploads/'+shp+'.SHP'
     ba = call_command('ogrinspect', shpf, shp, '--multi-geom', '--mapping', '--null=True')
     bas = ba.splitlines()
     ct = 0
